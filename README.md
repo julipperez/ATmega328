@@ -1,1 +1,1 @@
-# ATmega328
+Colección de proyectos con ATmega328P en C. Incluye ejemplos de comunicación serial, manejo de timers y control de pines. Pensado como portafolio para mostrar experiencia en programación de microcontroladores AVR.
