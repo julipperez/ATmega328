@@ -1,0 +1,29 @@
+#include <avr/io.h>
+
+int main(void) {
+
+    // CONFIGURAR EL BAUD RATE A 9600
+    UBRR0H = 0x00;  
+    UBRR0L = 0x33;
+
+    // CONFIGURAR MODO ASINCRONICO NORMAL Y TRAMA 7E1
+    UCSR0A &= ~(1 << U2X0);
+
+    UCSR0C = (1 << UCSZ01) | (1 << UPM01);
+
+    UCSR0B &= ~(1 << UCSZ02);
+
+    // HABILITAR RECEPTOR Y TRANSMISOR
+    UCSR0B |= (1 << RXEN0) | (1 << TXEN0);
+
+    unsigned char dato;
+
+    // RECIBIR UN BYTE
+    while (!(UCSR0A & (1 << RXC0))) {
+    }
+
+    dato = UDR0;
+
+    // TRANSMITIR EL MISMO BYTE
+    while (!(UCSR0A & (1 << UDRE0))) {
+    }
